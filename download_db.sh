@@ -4,15 +4,17 @@
 # and configure
 cd /data
 
-if [ ! -f "./panama-papers-mac-2016-05-17.tar.gz" ]; then
+DATA_FILE="panama-papers-mac-2016-06-27.tar.gz"
+
+if [ ! -f "./$DATA_FILE" ]; then
   echo "Downloading data"
-  wget "https://cloudfront-files-1.publicintegrity.org/offshoreleaks/neo4j/panama-papers-mac-2016-05-17.tar.gz"
-else 
+  wget "https://cloudfront-files-1.publicintegrity.org/offshoreleaks/neo4j/$DATA_FILE"
+else
   echo "Not downloading data as file already exists"
 fi
 
 if [ ! -d "./panama-papers" ]; then
-  tar -zxvf panama-papers-mac-2016-05-17.tar.gz
+  tar -zxvf "$DATA_FILE"
 fi
 
 if [ ! -d "/data/databases/panama.graphdb" ]; then
